@@ -5,7 +5,6 @@ defmodule Rockelivery.Application do
 
   use Application
 
-  @impl true
   def start(_type, _args) do
     children = [
       # Start the Ecto repository
@@ -15,9 +14,11 @@ defmodule Rockelivery.Application do
       # Start the PubSub system
       {Phoenix.PubSub, name: Rockelivery.PubSub},
       # Start the Endpoint (http/https)
-      RockeliveryWeb.Endpoint
+      RockeliveryWeb.Endpoint,
       # Start a worker by calling: Rockelivery.Worker.start_link(arg)
       # {Rockelivery.Worker, arg}
+      Rockelivery.Orders.ReportRunner
+      # Inicia o genserve que gera o relatorio de ordens a cada 10 minutos
     ]
 
     # See https://hexdocs.pm/elixir/Supervisor.html
@@ -28,7 +29,6 @@ defmodule Rockelivery.Application do
 
   # Tell Phoenix to update the endpoint configuration
   # whenever the application is updated.
-  @impl true
   def config_change(changed, _new, removed) do
     RockeliveryWeb.Endpoint.config_change(changed, removed)
     :ok
