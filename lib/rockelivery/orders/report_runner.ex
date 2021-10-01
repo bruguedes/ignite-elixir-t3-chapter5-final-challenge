@@ -30,23 +30,8 @@ defmodule Rockelivery.Orders.ReportRunner do
     {:noreply, state}
   end
 
-  # def handle_info(:add_order, state) do
-  #   Logger.info("Add orders!")
-
-  #   Test.change()
-
-  #   schedule_add_orders()
-
-  #   {:noreply, state}
-  # end
-
   def schedule_report_generation do
     # Essa função define o tempo em que o relatorio serar gerado
     Process.send_after(self(), :generate, 1000 * 60)
   end
-
-  # def schedule_add_orders do
-  #   # Essa função define o tempo em que o relatorio serar gerado
-  #   Process.send_after(self(), :add_order, 1000 * 10)
-  # end
 end
