@@ -10,7 +10,7 @@ use Mix.Config
 config :rockelivery,
   ecto_repos: [Rockelivery.Repo]
 
-# Configuração para determinar que esse sera o adapter.
+# Configuração para determinar que esse será o adapter.
 config :rockelivery, Rockelivery.Users.Create, via_cep_adapter: Rockelivery.ViaCep.Client
 
 # Configuração para determinar que a Pk e FK serão do tipo UUID
