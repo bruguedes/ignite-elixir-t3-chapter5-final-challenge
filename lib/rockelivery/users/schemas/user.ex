@@ -33,8 +33,6 @@ defmodule Rockelivery.Users.Schemas.User do
   def changeset_create(params) do
     params
     |> changeset(@required_params)
-
-    # |> apply_action(:create)
   end
 
   def changeset_update(struct, params) do
@@ -42,24 +40,6 @@ defmodule Rockelivery.Users.Schemas.User do
   end
 
   def build(changeset), do: apply_action(changeset, :create)
-  # def changeset_cep(struct \\ %__MODULE__{}, cep) do
-  #   struct
-  #   |> cast(%{"cep" => cep}, [:cep])
-  #   |> validate_required(:cep)
-  #   |> validate_length(:cep, is: 8)
-  #   |> apply_action(:cep)
-  # end
-
-  # def changeset_email_cpf(%{"email" => _, "cpf" => _} = params) do
-  #   %__MODULE__{}
-  #   |> cast(params, [:email, :cpf])
-  #   |> validate_required([:email, :cpf])
-  #   |> validate_length(:cpf, is: 11)
-  #   |> validate_format(:email, @email_regex)
-  #   # |> unique_constraint([:email])
-  #   # |> unique_constraint([:cpf])
-  #   |> apply_action(:unique_constraint)
-  # end
 
   defp changeset(struct \\ %__MODULE__{}, params, fields) do
     struct

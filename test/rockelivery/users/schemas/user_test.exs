@@ -107,4 +107,55 @@ defmodule Rockelivery.Users.Schemas.UserTest do
              } = response
     end
   end
+
+  describe "build/1" do
+    test "sucess, when params are valid", ctx do
+      response =
+        User.changeset_create(ctx.user)
+        |> User.build()
+
+      assert {:ok,
+              %User{
+                address: "Av. Teste de Changeset",
+                age: 36,
+                cep: "69905080",
+                cpf: "12312312312",
+                email: "bruguedes@gmail.com",
+                name: "Bruno Guedes",
+                password: "123123",
+                password_hash: _
+              }} = response
+    end
+
+    test "fail, when params are invalid", ctx do
+      params = %{ctx.user | "cep" => "123", "cpf" => "456", "email" => "not_valid"}
+
+      response =
+        User.changeset_create(params)
+        |> User.build()
+
+      assert {:error,
+              %Changeset{
+                changes: %{
+                  address: "Av. Teste de Changeset",
+                  age: 36,
+                  cep: "123",
+                  cpf: "456",
+                  email: "not_valid",
+                  name: "Bruno Guedes",
+                  password: "123123"
+                },
+                errors: [
+                  email: {"has invalid format", [validation: :format]},
+                  cpf:
+                    {"should be %{count} character(s)",
+                     [count: 11, validation: :length, kind: :is, type: :string]},
+                  cep:
+                    {"should be %{count} character(s)",
+                     [count: 8, validation: :length, kind: :is, type: :string]}
+                ],
+                valid?: false
+              }} = response
+    end
+  end
 end
