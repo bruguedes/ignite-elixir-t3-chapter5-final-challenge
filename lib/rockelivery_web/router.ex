@@ -25,8 +25,6 @@ defmodule RockeliveryWeb.Router do
   scope "/api", RockeliveryWeb do
     pipe_through :api
 
-    get "/", WelcomerController, :welcomer
-
     post "/users/", UsersController, :create
 
     post "/users/singin", UsersController, :sing_in
