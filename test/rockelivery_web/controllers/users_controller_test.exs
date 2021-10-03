@@ -168,6 +168,48 @@ defmodule RockeliveryWeb.UsersControllerTest do
     end
   end
 
+  describe "show/1" do
+    setup %{conn: conn} do
+      user = insert(:user)
+      {:ok, token, _claims} = Guardian.encode_and_sign(user)
+      conn = put_req_header(conn, "authorization", "Bearer #{token}")
+      {:ok, conn: conn, user: user}
+    end
+
+    test "sucess, when id is valid", ctx do
+      # params = %{"age" => 37, "email" => "update_email@email.com"}
+      user_id = ctx.user.id
+
+      response =
+        ctx.conn
+        |> get(Routes.users_path(ctx.conn, :update, user_id))
+        |> json_response(:ok)
+
+      assert %{
+               "user" => %{
+                 "address" => "Av. Teste de Changeset",
+                 "age" => 36,
+                 "cep" => "69905080",
+                 "cpf" => "12312312312",
+                 "email" => "bruguedes@gmail.com",
+                 "id" => user_id,
+                 "name" => "Bruno Guedes"
+               }
+             } = response
+    end
+
+    test "fail, when user not found", ctx do
+      id_invalid = UUID.generate()
+
+      response =
+        ctx.conn
+        |> get(Routes.users_path(ctx.conn, :update, id_invalid))
+        |> json_response(:not_found)
+
+      assert %{"message" => "user not found"} = response
+    end
+  end
+
   describe "delete/1" do
     test "sucess, when id a valid", %{conn: conn} do
       user = insert(:user)
