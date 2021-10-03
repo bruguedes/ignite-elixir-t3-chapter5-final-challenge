@@ -49,5 +49,17 @@ defmodule Rockelivery.Users.CreateTest do
       assert {:error, %Error{status: :bad_request, result: changeset}} = response
       assert errors_on(changeset) == expected_response
     end
+
+    test "fail, when cep number not valid" do
+      params = build(:user_params)
+
+      expect(ClientMock, :get_cep_info, fn _cep ->
+        {:error, %Rockelivery.Error{result: :econnrefused, status: :bad_request}}
+      end)
+
+      response = Create.call(params)
+
+      assert {:error, %Rockelivery.Error{result: :econnrefused, status: :bad_request}} = response
+    end
   end
 end
