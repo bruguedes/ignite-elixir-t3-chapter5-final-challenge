@@ -30,11 +30,6 @@ defmodule Rockelivery.ViaCep.Client do
   defp handle_get({:ok, %Env{status: 200, body: body}}) do
     address = "#{body["logradouro"]}, #{body["bairro"]}, #{body["localidade"]}/#{body["uf"]}"
 
-    # user =
-    #   user
-    #   |> Map.put("address", address)
-    #   |> IO.inspect()
-
     {:ok, address}
   end
 end
