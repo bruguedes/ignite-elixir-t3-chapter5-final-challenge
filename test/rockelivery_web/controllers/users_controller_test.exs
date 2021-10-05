@@ -177,7 +177,6 @@ defmodule RockeliveryWeb.UsersControllerTest do
     end
 
     test "sucess, when id is valid", ctx do
-      # params = %{"age" => 37, "email" => "update_email@email.com"}
       user_id = ctx.user.id
 
       response =
@@ -238,6 +237,63 @@ defmodule RockeliveryWeb.UsersControllerTest do
       assert %{
                "message" => "user not found"
              } = response
+    end
+  end
+
+  describe "sing_in/1" do
+    test "sucess, when id and password is valid", %{conn: conn} do
+      user = insert(:user)
+      params = %{"id" => user.id, "password" => user.password}
+
+      response =
+        conn
+        |> post("api/users/singin", params)
+        |> json_response(:ok)
+
+      assert %{"token" => _token} = response
+    end
+
+    test "fail, when password not a valid", %{conn: conn} do
+      user = insert(:user)
+      params = %{"id" => user.id, "password" => "invalid"}
+
+      response =
+        conn
+        |> post("api/users/singin", params)
+        |> json_response(:unauthorized)
+
+      assert %{"message" => "Please verify your credentials"} = response
+    end
+
+    test "fail, when user id not found", %{conn: conn} do
+      params = %{"id" => UUID.generate(), "password" => "123123"}
+
+      response =
+        conn
+        |> post("api/users/singin", params)
+        |> json_response(:not_found)
+
+      assert %{"message" => "user not found"} = response
+    end
+
+    test "fail, when user id not a valid", %{conn: conn} do
+      params = %{"id" => "invalid", "password" => "123123"}
+
+      response =
+        conn
+        |> post("api/users/singin", params)
+        |> json_response(:bad_request)
+
+      assert %{"message" => "Invalid UUID"} = response
+    end
+
+    test "fail, when params empty", %{conn: conn} do
+      response =
+        conn
+        |> post("api/users/singin", %{})
+        |> json_response(:bad_request)
+
+      assert %{"message" => "Invalid or missing params"} = response
     end
   end
 end

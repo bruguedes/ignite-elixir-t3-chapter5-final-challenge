@@ -31,6 +31,7 @@ defmodule Rockelivery.Factory do
       cpf: "12312312312",
       email: "bruguedes@gmail.com",
       password: "123123",
+      password_hash: add_hash(),
       name: "Bruno Guedes"
     }
   end
@@ -84,5 +85,10 @@ defmodule Rockelivery.Factory do
         %{"id" => item_2.id, "quantity" => 2}
       ]
     }
+  end
+
+  def add_hash do
+    %{password_hash: hash} = Pbkdf2.add_hash("123123")
+    hash
   end
 end
