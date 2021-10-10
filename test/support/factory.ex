@@ -6,6 +6,7 @@ defmodule Rockelivery.Factory do
   alias Ecto.UUID
   alias Rockelivery.Items.Create, as: ItemCreate
   alias Rockelivery.Items.Schemas.Item
+  alias Rockelivery.Orders.Schemas.Order
   alias Rockelivery.Users.Create, as: UserCreate
   alias Rockelivery.Users.Schemas.User
   alias Rockelivery.ViaCep.ClientMock
@@ -83,6 +84,23 @@ defmodule Rockelivery.Factory do
       "items" => [
         %{"id" => item_1.id, "quantity" => 2},
         %{"id" => item_2.id, "quantity" => 2}
+      ]
+    }
+  end
+
+  def order_factory do
+    user = insert(:user)
+    item_1 = insert(:item)
+    item_2 = insert(:item)
+
+    %Order{
+      address: user.address,
+      user_id: user.id,
+      comments: "Com Pimenta",
+      payment_method: "credit_card",
+      items: [
+        item_1,
+        item_2
       ]
     }
   end

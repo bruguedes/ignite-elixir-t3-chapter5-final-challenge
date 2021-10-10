@@ -1,17 +1,9 @@
 defmodule RockeliveryWeb.ItemsControllerTest do
   use RockeliveryWeb.ConnCase, async: true
 
-  import Mox
   import Rockelivery.Factory
 
-  alias Ecto.UUID
-
-  alias Rockelivery.Users.Schemas.User
-
-  alias Rockelivery.ViaCep.ClientMock
-
   alias RockeliveryWeb.Auth.Guardian
-  alias RockeliveryWeb.UsersController
 
   setup %{conn: conn} do
     user = insert(:user)

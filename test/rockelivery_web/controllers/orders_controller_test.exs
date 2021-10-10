@@ -1,18 +1,11 @@
 defmodule RockeliveryWeb.OrdersControllerTest do
   use RockeliveryWeb.ConnCase, async: true
 
-  import Mox
   import Rockelivery.Factory
 
   alias Ecto.UUID
 
-  alias Rockelivery.Users.Schemas.User
-
-  alias Rockelivery.ViaCep.ClientMock
-
   alias RockeliveryWeb.Auth.Guardian
-  alias RockeliveryWeb.OrdersController
-  alias RockeliveryWeb.UsersController
 
   setup %{conn: conn} do
     user = insert(:user, cpf: "00000000000", email: "authorization@mail.com")
@@ -100,7 +93,7 @@ defmodule RockeliveryWeb.OrdersControllerTest do
 
     test "fail, when id item is invalid", ctx do
       id_item_invalid = UUID.generate()
-      item = insert(:item)
+      insert(:item)
 
       param = %{
         "address" => ctx.user.address,
