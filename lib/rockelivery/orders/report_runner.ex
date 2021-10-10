@@ -30,6 +30,8 @@ defmodule Rockelivery.Orders.ReportRunner do
     {:noreply, state}
   end
 
+  def handle_info(_, _), do: {:error, "genserver failure"}
+
   def schedule_report_generation do
     # Essa função define o tempo em que o relatorio serar gerado
     Process.send_after(self(), :generate, 1000 * 60)
