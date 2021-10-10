@@ -4,7 +4,7 @@ defmodule Rockelivery.Users.CreateTest do
   import Mox
   import Rockelivery.Factory
 
-  alias Rockelivery.{Error, Repo}
+  alias Rockelivery.Error
   alias Rockelivery.Users.Create
   alias Rockelivery.Users.Schemas.User
   alias Rockelivery.ViaCep.ClientMock

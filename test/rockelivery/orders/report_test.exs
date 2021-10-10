@@ -6,7 +6,7 @@ defmodule Rockelivery.Orders.ReportTest do
   alias Rockelivery.Orders.Report
 
   describe "report/1" do
-    test "sucess, report created ", ctx do
+    test "sucess, report created" do
       insert(:order)
       assert :ok = Report.create()
     end

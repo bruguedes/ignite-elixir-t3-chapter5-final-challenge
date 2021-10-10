@@ -6,12 +6,9 @@ defmodule RockeliveryWeb.UsersControllerTest do
 
   alias Ecto.UUID
 
-  alias Rockelivery.Users.Schemas.User
-
   alias Rockelivery.ViaCep.ClientMock
 
   alias RockeliveryWeb.Auth.Guardian
-  alias RockeliveryWeb.UsersController
 
   describe "create/1" do
     test "sucess, when all params is valid", %{conn: conn} do
@@ -126,7 +123,7 @@ defmodule RockeliveryWeb.UsersControllerTest do
                  "cep" => "69905080",
                  "cpf" => "12312312312",
                  "email" => "update_email@email.com",
-                 "id" => user_id,
+                 "id" => ^user_id,
                  "name" => "Bruno Guedes"
                }
              } = response
@@ -191,7 +188,7 @@ defmodule RockeliveryWeb.UsersControllerTest do
                  "cep" => "69905080",
                  "cpf" => "12312312312",
                  "email" => "bruguedes@gmail.com",
-                 "id" => user_id,
+                 "id" => ^user_id,
                  "name" => "Bruno Guedes"
                }
              } = response

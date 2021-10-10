@@ -5,15 +5,13 @@ defmodule Rockelivery.Orders.ReportRunnerTest do
 
   import Rockelivery.Factory
 
-  alias Rockelivery.Orders.Report
   alias Rockelivery.Orders.ReportRunner
 
   describe "handle_info/2" do
     test "sucess, report created" do
       insert(:order)
 
-      GenServer.start_link(ReportRunner, %{})
-
+      ReportRunner.init(%{})
       assert {:noreply, _state} = ReportRunner.handle_info(:generate, 1000 * 60)
     end
 
