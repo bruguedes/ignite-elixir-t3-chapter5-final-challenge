@@ -1,8 +1,6 @@
 defmodule Rockelivery.Orders.Test do
   import Ecto.Query
 
-  alias Rockelivery.Repo
-  alias Rockelivery.Orders.Schemas.Order
   alias Rockelivery.Orders.Create
 
   def change do
