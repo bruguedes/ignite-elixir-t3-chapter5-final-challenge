@@ -1,4 +1,6 @@
 # ignite-elixir-t3-chapter5-final-challenge
+[![codecov](https://codecov.io/gh/bruguedes/ignite-elixir-t3-chapter5-final-challenge/branch/main/graph/badge.svg?token=KAXHYM1ZC8)](https://codecov.io/gh/bruguedes/ignite-elixir-t3-chapter5-final-challenge)
+
 Desafio final: aplicação desenvolvida no decorrer da trilha Elixir, sistema de pedido de Delivery Rockelivery
 
 
