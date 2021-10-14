@@ -18,8 +18,8 @@ alias Rockelivery.Users.Schemas.User
 user = %User{
   age: 36,
   cep: "69900000",
-  cpf: "12345678900",
-  email: "seeds_test@gmail.com",
+  cpf: "11100022233",
+  email: "seeds_test2@gmail.com",
   name: "Bruno Guedes",
   password: "111222"
 }
@@ -52,3 +52,7 @@ order = %Order{
 }
 
 Repo.insert!(order)
+
+seed_script = Path.join(["#{:code.priv_dir(:rockelivery)}", "repo", "seeds.exs"])
+
+Code.eval_file(seed_script)
