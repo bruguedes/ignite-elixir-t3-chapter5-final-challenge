@@ -52,7 +52,3 @@ order = %Order{
 }
 
 Repo.insert!(order)
-
-seed_script = Path.join(["#{:code.priv_dir(:rockelivery)}", "repo", "seeds.exs"])
-
-Code.eval_file(seed_script)
