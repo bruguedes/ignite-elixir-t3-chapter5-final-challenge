@@ -9,3 +9,46 @@
 #
 # We recommend using the bang functions (`insert!`, `update!`
 # and so on) as they will fail if something goes wrong.
+
+alias Rockelivery.Repo
+alias Rockelivery.Items.Schemas.Item
+alias Rockelivery.Orders.Schemas.Order
+alias Rockelivery.Users.Schemas.User
+
+user = %User{
+  age: 36,
+  cep: "69905080",
+  cpf: "80727859234",
+  email: "bruguedes@gmail.com",
+  name: "Bruno Guedes",
+  password: "111222"
+}
+
+%User{id: user_id} = Repo.insert!(user)
+
+item_1 = %Item{
+  category: "food",
+  description: "Churrasco",
+  price: "10.00",
+  photo: "/priv/photos/churrasco.jpg"
+}
+
+item_2 = %Item{
+  category: "food",
+  description: "Medalhão ",
+  price: "15.00",
+  photo: "/priv/photos/medalhao.jpg"
+}
+
+Repo.insert!(item_1)
+Repo.insert!(item_2)
+
+order = %Order{
+  user_id: user_id,
+  items: [item_1, item_1, item_2],
+  address: "Avenida Epaminondas Jacome. 1977",
+  comments: "Molho de pimenta extra",
+  payment_method: :money
+}
+
+Repo.insert!(order)
