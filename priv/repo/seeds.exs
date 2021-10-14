@@ -18,8 +18,8 @@ alias Rockelivery.Users.Schemas.User
 user = %User{
   age: 36,
   cep: "69905080",
-  cpf: "80727859234",
-  email: "bruguedes@gmail.com",
+  cpf: "11122233344",
+  email: "seeds@gmail.com",
   name: "Bruno Guedes",
   password: "111222"
 }
