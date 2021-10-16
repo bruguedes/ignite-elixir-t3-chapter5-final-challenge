@@ -67,7 +67,8 @@ Estando na pasta do projeto via terminal execute os comandos a seguir:
 * Cadastrando ordem de pedido: 
    `POST` http://localhost:4000/api/orders
    
-   ![order](https://user-images.githubusercontent.com/13700771/137562459-76b6e3e5-fdc2-41d0-ac65-3a48fdbb1fab.png)
+   ![order2](https://user-images.githubusercontent.com/13700771/137574322-ea2ce651-7d21-4597-a4d9-e80dd87e2676.png)
+
 
 ## Learn more
 
