@@ -33,30 +33,40 @@ Estando na pasta do projeto via terminal execute os comandos a seguir:
 * Rotas publicas:
   * Sign-up de usuario: 
     `POST` http://localhost:4000/api/users
+
    ![2021-10-15_17-17](https://user-images.githubusercontent.com/13700771/137559675-9e832a47-eb15-4690-be74-1024b2d749fe.png)
  
  * Sign-in usuario: 
-     `POST` http://localhost:4000/api/users/singin
+    `POST` http://localhost:4000/api/users/singin
+    
     ![2](https://user-images.githubusercontent.com/13700771/137561020-e8561080-d448-40ea-b3b0-e83c7eb693af.png)
 
 * Rotas com autenticação:
   * Para rotas com autenticação via token é necessarrio copiar o token sem as aspas (" ") da resposta da rota de sing-in e adiociona na requisição de cadastro de item.
-![4](https://user-images.githubusercontent.com/13700771/137562094-d2c5a9c6-c41d-4c58-a6f7-c6db7b3a0f28.png)
+    
+  ![4](https://user-images.githubusercontent.com/13700771/137562094-d2c5a9c6-c41d-4c58-a6f7-c6db7b3a0f28.png)
+
 * Buscando Usuario: 
-   `GET` http://localhost:4000/api/users/:user_id
-  ![get](https://user-images.githubusercontent.com/13700771/137562947-be4f285c-ae7a-478a-99d2-669ddb87d107.png)
+    `GET` http://localhost:4000/api/users/:user_id
+    
+    ![get](https://user-images.githubusercontent.com/13700771/137562947-be4f285c-ae7a-478a-99d2-669ddb87d107.png)
 
 * Atualizando Usuario: 
-   `PUT` http://localhost:4000/api/users/:user_id
-   ![up](https://user-images.githubusercontent.com/13700771/137562772-7b0cba39-a97b-4ee1-ab54-8fc569392b50.png)
+    `PUT` http://localhost:4000/api/users/:user_id
+    
+    ![up](https://user-images.githubusercontent.com/13700771/137562772-7b0cba39-a97b-4ee1-ab54-8fc569392b50.png)
 
 * Excluindo Usuario: 
+   
    `DELETE` http://localhost:4000/api/users/:user_id
+
 * Cadastrando item: 
    `POST` http://localhost:4000/api/items
+   
    ![item](https://user-images.githubusercontent.com/13700771/137562215-1ea0d42d-ac59-480c-b500-17c3476b7089.png)
 * Cadastrando ordem de pedido: 
    `POST` http://localhost:4000/api/orders
+   
    ![order](https://user-images.githubusercontent.com/13700771/137562459-76b6e3e5-fdc2-41d0-ac65-3a48fdbb1fab.png)
 
 ## Learn more
