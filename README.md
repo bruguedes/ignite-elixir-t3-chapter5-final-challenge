@@ -67,19 +67,6 @@ From the project folder via terminal, execute the following commands:
    
    ![order2](https://user-images.githubusercontent.com/13700771/137574322-ea2ce651-7d21-4597-a4d9-e80dd87e2676.png)
 
-##### The system is running in test mode, and it is possible to test the functionality of the system using HTTP request program such as insomnia/postman, on routes:
-
-* Public routes:
-  * User signup: `POST` https://glum-idolized-tegus.gigalixirapp.com/api/users
-  * User Sign-in:`POST` https://glum-idolized-tegus.gigalixirapp.com/api/users/singin
- 
-* Routes with authentication:
-  * getting user: `GET` https://glum-idolized-tegus.gigalixirapp.com/api/users/:user_id
-  * user update: `PUT` https://glum-idolized-tegus.gigalixirapp.com/api/users/:user_id
-  * Deleting User: `DELETE` https://glum-idolized-tegus.gigalixirapp.com/api/users/:user_id
-  * Registering item: `POST` https://glum-idolized-tegus.gigalixirapp.com/api/items
-  * Registering order: `POST` https://glum-idolized-tegus.gigalixirapp.com/api/orders
-  
 ## Learn more
 
   * Official website: https://www.phoenixframework.org/
