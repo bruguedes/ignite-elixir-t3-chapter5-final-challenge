@@ -2,7 +2,7 @@
 [![codecov](https://codecov.io/gh/bruguedes/ignite-elixir-t3-chapter5-final-challenge/branch/main/graph/badge.svg?token=KAXHYM1ZC8)](https://codecov.io/gh/bruguedes/ignite-elixir-t3-chapter5-final-challenge)
 
 Final challenge: application developed along the Elixir trail, Rockelivery Delivery order system
-adastrando ordem de pedido
+
 Application has the basic functionalities of a delivery system, where the user must have a registration, login with authentication via token, choose the items, quantity of each item, and generate the order.
 
 # Requirements
