@@ -30,8 +30,8 @@ defmodule Rockelivery.Items.Schemas.ItemTest do
 
     test "fail, when params are invalid", ctx do
       params = %{ctx.item | "category" => "invalid_category", "price" => "0"}
-      response = Item.changeset(params)
       price = Decimal.new("0")
+      response = Item.changeset(params)
 
       assert %Changeset{
                changes: %{
@@ -42,7 +42,7 @@ defmodule Rockelivery.Items.Schemas.ItemTest do
                errors: [
                  price:
                    {"must be greater than %{number}",
-                    [validation: :number, kind: :greater_than, number: 0]},
+                    [validation: :number, kind: :greater_than, number: ^price]},
                  category:
                    {"is invalid",
                     [
@@ -52,7 +52,9 @@ defmodule Rockelivery.Items.Schemas.ItemTest do
                            on_dump: %{desert: "desert", drink: "drink", food: "food"},
                            on_load: %{"desert" => :desert, "drink" => :drink, "food" => :food},
                            type: :string,
-                           values: [:food, :drink, :desert]
+                           embed_as: :self,
+                           mappings: [food: "food", drink: "drink", desert: "desert"],
+                           on_cast: %{"desert" => :desert, "drink" => :drink, "food" => :food}
                          }},
                       validation: :cast
                     ]}
