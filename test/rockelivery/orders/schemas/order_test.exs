@@ -19,8 +19,6 @@ defmodule Rockelivery.Orders.Schemas.OrderTest do
 
   describe "changeset/1" do
     test "sucess, when params are valid", ctx do
-      response = Order.changeset(ctx.order, ctx.items)
-
       assert assert %Changeset{
                       changes: %{
                         address: "Av. Teste de Changeset",
@@ -39,20 +37,24 @@ defmodule Rockelivery.Orders.Schemas.OrderTest do
                         user_id: _
                       },
                       valid?: true
-                    } = response
+                    } = Order.changeset(ctx.order, ctx.items)
     end
 
     test "fail, when params are invalid", ctx do
       params = %{ctx.order | "comments" => ":0", "payment_method" => "invalid"}
       response = Order.changeset(params, ctx.items)
 
-      assert %Changeset{
+      assert %Ecto.Changeset{
                changes: %{
                  address: "Av. Teste de Changeset",
                  comments: ":0",
                  items: [
-                   %Changeset{valid?: true},
-                   %Changeset{valid?: true}
+                   %Ecto.Changeset{
+                     valid?: true
+                   },
+                   %Ecto.Changeset{
+                     valid?: true
+                   }
                  ],
                  user_id: _
                },
@@ -66,6 +68,17 @@ defmodule Rockelivery.Orders.Schemas.OrderTest do
                       type:
                         {:parameterized, Ecto.Enum,
                          %{
+                           embed_as: :self,
+                           mappings: [
+                             money: "money",
+                             credit_card: "credit_card",
+                             debit_card: "debit_card"
+                           ],
+                           on_cast: %{
+                             "credit_card" => :credit_card,
+                             "debit_card" => :debit_card,
+                             "money" => :money
+                           },
                            on_dump: %{
                              credit_card: "credit_card",
                              debit_card: "debit_card",
@@ -76,8 +89,7 @@ defmodule Rockelivery.Orders.Schemas.OrderTest do
                              "debit_card" => :debit_card,
                              "money" => :money
                            },
-                           type: :string,
-                           values: [:money, :credit_card, :debit_card]
+                           type: :string
                          }},
                       validation: :cast
                     ]}
