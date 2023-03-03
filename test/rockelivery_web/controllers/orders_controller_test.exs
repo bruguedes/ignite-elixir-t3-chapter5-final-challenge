@@ -20,7 +20,7 @@ defmodule RockeliveryWeb.OrdersControllerTest do
 
       response =
         ctx.conn
-        |> post("api/orders", order)
+        |> post("/api/orders", order)
         |> json_response(:created)
 
       assert %{
@@ -80,7 +80,7 @@ defmodule RockeliveryWeb.OrdersControllerTest do
 
       response =
         ctx.conn
-        |> post("api/orders", param)
+        |> post("/api/orders", param)
         |> json_response(:bad_request)
 
       assert %{
@@ -107,7 +107,7 @@ defmodule RockeliveryWeb.OrdersControllerTest do
 
       response =
         ctx.conn
-        |> post("api/orders", param)
+        |> post("/api/orders", param)
         |> json_response(:bad_request)
 
       assert %{"message" => "Invalid ids!"} = response
