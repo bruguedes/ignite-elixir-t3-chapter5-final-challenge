@@ -5,9 +5,9 @@ defmodule Rockelivery.MixProject do
     [
       app: :rockelivery,
       version: "0.1.0",
-      elixir: "~> 1.7",
+      elixir: "~> 1.14.0",
       elixirc_paths: elixirc_paths(Mix.env()),
-      compilers: [:phoenix, :gettext] ++ Mix.compilers(),
+      compilers: [:phoenix] ++ Mix.compilers(),
       start_permanent: Mix.env() == :prod,
       aliases: aliases(),
       deps: deps(),
@@ -53,12 +53,14 @@ defmodule Rockelivery.MixProject do
       {:credo, "~> 1.5", only: [:dev, :test], runtime: false},
       {:pbkdf2_elixir, "~> 1.3"},
       {:ex_machina, "~> 2.7.0"},
-      {:excoveralls, "~> 0.10", only: :test},
+      {:excoveralls, "~> 0.15.3", only: :test},
       {:tesla, "~> 1.4.0"},
       {:hackney, "~> 1.17.0"},
       {:bypass, "~> 2.1", only: :test},
       {:mox, "~> 1.0", only: :test},
-      {:guardian, "~> 2.0"}
+      {:guardian, "~> 2.3"},
+      {:dialyxir, "~> 1.2", only: [:dev, :test], runtime: false},
+      {:sobelow, "~> 0.8", only: :dev}
     ]
   end
 

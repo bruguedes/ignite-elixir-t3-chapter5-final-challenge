@@ -244,7 +244,7 @@ defmodule RockeliveryWeb.UsersControllerTest do
 
       response =
         conn
-        |> post("api/users/singin", params)
+        |> post("/api/users/singin", params)
         |> json_response(:ok)
 
       assert %{"token" => _token} = response
@@ -256,7 +256,7 @@ defmodule RockeliveryWeb.UsersControllerTest do
 
       response =
         conn
-        |> post("api/users/singin", params)
+        |> post("/api/users/singin", params)
         |> json_response(:unauthorized)
 
       assert %{"message" => "Please verify your credentials"} = response
@@ -267,7 +267,7 @@ defmodule RockeliveryWeb.UsersControllerTest do
 
       response =
         conn
-        |> post("api/users/singin", params)
+        |> post("/api/users/singin", params)
         |> json_response(:not_found)
 
       assert %{"message" => "user not found"} = response
@@ -278,7 +278,7 @@ defmodule RockeliveryWeb.UsersControllerTest do
 
       response =
         conn
-        |> post("api/users/singin", params)
+        |> post("/api/users/singin", params)
         |> json_response(:bad_request)
 
       assert %{"message" => "Invalid UUID"} = response
@@ -287,7 +287,7 @@ defmodule RockeliveryWeb.UsersControllerTest do
     test "fail, when params empty", %{conn: conn} do
       response =
         conn
-        |> post("api/users/singin", %{})
+        |> post("/api/users/singin", %{})
         |> json_response(:bad_request)
 
       assert %{"message" => "Invalid or missing params"} = response
