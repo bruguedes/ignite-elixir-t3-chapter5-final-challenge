@@ -48,11 +48,4 @@ defmodule RockeliveryWeb.UsersController do
       |> render("sing_in.json", token: token)
     end
   end
-
-  def test_deploy(conn, _params) do
-    conn
-    |> put_status(200)
-    |> put_resp_header("content-type", "application/json")
-    |> send_resp(200, Jason.encode!("Esta em deploy :)"))
-  end
 end
