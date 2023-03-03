@@ -58,8 +58,8 @@ defmodule Rockelivery.MixProject do
       {:hackney, "~> 1.17.0"},
       {:bypass, "~> 2.1", only: :test},
       {:mox, "~> 1.0", only: :test},
-      {:guardian, "~> 2.0"},
-      {:dialyxir, "~> 0.5.0", only: [:dev, :test], runtime: false},
+      {:guardian, "~> 2.3"},
+      {:dialyxir, "~> 1.2", only: [:dev, :test], runtime: false},
       {:sobelow, "~> 0.8", only: :dev}
     ]
   end
