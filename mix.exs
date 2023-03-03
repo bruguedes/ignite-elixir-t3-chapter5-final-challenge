@@ -5,7 +5,7 @@ defmodule Rockelivery.MixProject do
     [
       app: :rockelivery,
       version: "0.1.0",
-      elixir: "~> 1.7",
+      elixir: "~> 1.14",
       elixirc_paths: elixirc_paths(Mix.env()),
       compilers: [:phoenix, :gettext] ++ Mix.compilers(),
       start_permanent: Mix.env() == :prod,
@@ -58,7 +58,9 @@ defmodule Rockelivery.MixProject do
       {:hackney, "~> 1.17.0"},
       {:bypass, "~> 2.1", only: :test},
       {:mox, "~> 1.0", only: :test},
-      {:guardian, "~> 2.0"}
+      {:guardian, "~> 2.0"},
+      {:dialyxir, "~> 0.5.0", only: [:dev, :test], runtime: false},
+      {:sobelow, "~> 0.8", only: :dev}
     ]
   end
 
