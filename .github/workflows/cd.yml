@@ -18,7 +18,7 @@ jobs:
     - uses: mhanberg/gigalixir-action@v0.4.3
       with:
           APP_SUBFOLDER: my-app-subfolder
-          GIGALIXIR_APP: glum-idolized-tegus
+          GIGALIXIR_APP: unlined-powerful-coypu
           GIGALIXIR_CLEAN: true
           GIGALIXIR_USERNAME: ${{ secrets.GIGALIXIR_USERNAME }}
           GIGALIXIR_PASSWORD: ${{ secrets.GIGALIXIR_PASSWORD }}
